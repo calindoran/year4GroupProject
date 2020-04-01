@@ -27,7 +27,7 @@ pacman::p_load(pacman, dplyr, GGally, ggplot2, ggthemes,
                stringr, tidyr) 
 
 # Retrieving data ####
-setwd("C:/Users/calin/Dropbox/College/Year Four/Data Science and Artificial Intelligence/Group Project/year4group/dataset") #100k
+setwd("C:/Users/calin/Dropbox/College/Year Four/Data Science and Artificial Intelligence/Group Project/year4GroupProject/dataset") #100k
 #setwd("C:/Users/calin/Dropbox/College/Year Four/Data Science and Artificial Intelligence/Group Project/Data Sets/ml-20m") #20mil
 
 movie_data <- read.csv("movies.csv", stringsAsFactors = FALSE)
@@ -203,13 +203,13 @@ testing_data <- movie_ratings[!sampled_data, ]
 recommendation_system <- recommenderRegistry$get_entries(dataType ="realRatingMatrix")
 recommendation_system$IBCF_realRatingMatrix$parameters
 
-recommen_model <- Recommender(data = training_data,
+recommend_model <- Recommender(data = training_data,
                               method = "IBCF",
                               parameter = list(k = 30))
-recommen_model
-class(recommen_model)
+recommend_model
+class(recommend_model)
 
-model_info <- getModel(recommen_model)
+model_info <- getModel(recommend_model)
 class(model_info$sim)
 dim(model_info$sim)
 top_items <- 20
@@ -224,7 +224,7 @@ qplot(sum_cols, fill=I("steelblue"), col=I("red"))+ ggtitle("Distribution of the
 # Top recommended ####
 
 top_recommendations <- 10 # the number of items to recommend to each user
-predicted_recommendations <- predict(object = recommen_model,
+predicted_recommendations <- predict(object = recommend_model,
                                      newdata = testing_data,
                                      n = top_recommendations)
 predicted_recommendations
