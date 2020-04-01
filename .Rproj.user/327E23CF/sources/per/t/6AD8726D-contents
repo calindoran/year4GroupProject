@@ -1,0 +1,46 @@
+
+
+library(recommenderlab)
+library(ggplot2)
+library(data.table)
+library(reshape2)
+
+# Load data
+setwd(
+    "~/Dropbox/College/Year Four/Data Science and Artificial Intelligence/Group Project/year4group/dataset/"
+)
+movie_data <- read.csv("movies.csv", stringsAsFactors = FALSE)
+rateing_data <- read.csv("ratings.csv")
+str(movie_data)
+
+summary(movie_data)
+
+head(movie_data)
+
+summary(rateing_data)
+
+head(rateing_data)
+
+# can see that userID and movieId columns consits of ints, need to covert genres..
+# in movie_data dataframe to more usable format.
+
+movie_genre <- as.data.frame(movie_data$genres, stringsAsFactors = FALSE)
+library(data.table)
+movie_genre2 <- as.data.frame(tstrsplit(movie_genre[,1], '[|]', type.convert = TRUE),
+                                        stringAsFactors=FALSE)
+list_genre <- c("Action","Adventure","Animation","Children","Comedy","Crime",
+                "Documentary","Drama","Fantasy","Film-Noir","Horror","Musical",
+                "Mystery","Romance","Sci-Fi","Thriller","War","Western")
+genre_mat1 <- matrix(0,10330,18)
+genre_mat1[1,] <- list_genre
+colnames(genre_mat1) <- list_genre
+
+for (index in 1:nrow(movie_genre2)){
+    for (col in 1:rcol(movie_genre2)){
+        gen_col = which(genre_mat1[1,] == movie_genre2[index,col])
+        genre_mat1[index+1,gen_col] <- 1
+    }
+}
+genre_mat2 <- as.data.frame(genre_mat1[-1,], stringsAsFactors = FALSE)
+
+}

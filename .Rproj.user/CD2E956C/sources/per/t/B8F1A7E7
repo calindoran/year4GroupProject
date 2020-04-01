@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580297154350.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2182939698",
+    "id" : "B8F1A7E7",
+    "lastKnownWriteTime" : 1580464691,
+    "last_content_update" : 1580464691805,
+    "path" : "C:/Users/Calin/Dropbox/College/Year Four/Data Science and Artificial Intelligence/Group Project/year4group/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "15,30",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
